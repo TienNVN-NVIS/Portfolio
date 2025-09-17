@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useState, useEffect } from "react";
 import Preloader from "../src/components/Pre";
 import Navbar from "./components/Navbar";
@@ -16,6 +17,10 @@ import ScrollToTop from "./components/ScrollToTop";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import BackToTop from "./components/common/BackToTop";
+
+// Import i18n
+import './i18n';
 
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -33,14 +38,26 @@ function App() {
       <Preloader load={load} />
       <div className="App" id={load ? "no-scroll" : "scroll"}>
         <Navbar />
-        <ScrollToTop />
+        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/project" element={<Projects />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<Navigate to="/"/>} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+
+        {/* BackToTop component */}
+        <BackToTop 
+          showAfter={300}
+          variant="primary"
+          size="md"
+          shape="circle"
+          showProgress={true}
+          icon="chevron"
+          smooth={true}
+        />
+
         <Footer />
       </div>
     </Router>

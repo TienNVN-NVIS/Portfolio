@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+/* App.css hoặc style.css */
+button.fixed {
+  z-index: 9999 !important;
+}
+
